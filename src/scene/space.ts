@@ -1,7 +1,7 @@
 // @ts-ignore
 import {AppScene} from "../core/app-scene";
 import {SunEntity} from "../entity/sun";
-import {Clock, PerspectiveCamera, WebGLRenderer} from "three";
+import {PerspectiveCamera, WebGLRenderer} from "three";
 import {EarthEntity} from "../entity/earth";
 import {OrbitControls} from "../controls/OrbitControls";
 
@@ -10,7 +10,6 @@ export class Space extends AppScene {
     sun: SunEntity;
     earth: EarthEntity;
     controls: OrbitControls;
-    clock = new Clock();
 
 
     create(): void {
@@ -47,7 +46,7 @@ export class Space extends AppScene {
         super.update(delta);
         this.controls.update();
         if (this.sun) {
-            this.sun.composer.render(this.clock.getDelta());
+            this.sun.composer.render(delta);
         }
 
     }
